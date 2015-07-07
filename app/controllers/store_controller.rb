@@ -8,5 +8,6 @@ class StoreController < ApplicationController
     # end
     @counter = session[:counter].nil? ? 0 : session[:counter] + 1
     session[:counter] = @counter
+    @cart = current_cart
   end
 end

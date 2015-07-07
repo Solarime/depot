@@ -14,11 +14,16 @@
 </div>
 <div id="columns">
   <div id="side">
+    <% if @cart %>
+        <%= hidden_div_if(@cart.line_items.empty?, id: "cart") do %>
+            <%= render @cart %>
+        <% end %>
+    <% end %>
     <a href="#">Home</a><br>
     <a href="#">Questions</a><br>
     <a href="#">News</a><br>
     <a href="#">Contact</a><br>
-    <a ><%= Time.now %></a>
+    <a><%= Time.now %></a>
   </div>
 
   <div id="main">
