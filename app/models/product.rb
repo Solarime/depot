@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
 
   has_many :line_itmes
+  has_many :orders, through: :line_itmes
+
   before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :title, :description, :image_url, presence: true

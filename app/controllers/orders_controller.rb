@@ -4,7 +4,10 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /orders/1
@@ -42,6 +45,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id]=nil
+        Notifier.create_order_received(@order).deliver
 
         format.html { redirect_to store_url, notice: 'Thanks for your order.' }
         format.json { render action: 'show', status: :created, location: @order }

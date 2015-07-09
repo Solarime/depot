@@ -16,7 +16,7 @@ Product.create(title: 'Programming Ruby',
                    <p>},
                 image_url: '/images/ruby.jpg',
                 price: 49.50)
-Product.create(title: 'RTP',
+Product.create(title: 'RTPRTPRTPRTPRTPRTP',
                 description:
                     %{<p>
                         Ruby is the fastest growing and most exciting dynamic language
@@ -25,7 +25,7 @@ Product.create(title: 'RTP',
                    <p>},
                 image_url: '/images/rtp.jpg',
                 price: 9.50)
-Product.create(title: 'Rails',
+Product.create(title: 'Rails-RailsRails',
                 description:
                     %{<p>
                         Ruby is the fastest growing and most exciting dynamic language
@@ -35,3 +35,16 @@ Product.create(title: 'Rails',
                 image_url: '/images/wd4d.jpg',
                 price: 4.50)
 
+Order.delete_all
+
+99.times do |n|
+  name = Faker::Name.name
+  address = Faker::Address.street_address
+  email = Faker::Internet.email
+  Order.create(
+           name: name,
+           address: address,
+           email: email,
+           pay_type: "Check"
+  )
+end
