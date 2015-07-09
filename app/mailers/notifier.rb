@@ -21,6 +21,5 @@ class Notifier < ApplicationMailer
     @order = order
 
     mail to: order.email, subject: 'Pragmatic Store Order Shipped'
-
   end
 end
