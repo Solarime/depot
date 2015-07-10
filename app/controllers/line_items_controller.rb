@@ -1,9 +1,12 @@
 class LineItemsController < ApplicationController
+  skip_before_filter :authorize, only: :create
+
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
   # GET /line_items.json
   def index
+    @line_items = LineItem.all
     @line_items = LineItem.all
   end
 
